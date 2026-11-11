@@ -1,0 +1,276 @@
+/* ===== Reset básico ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== Variáveis de cor (mudar a identidade do site fica fácil) ===== */
+:root {
+    --azul: #2563eb;
+    --azul-escuro: #1d4ed8;
+    --verde: #16a34a;
+    --vermelho: #b91c1c;
+    --texto: #1e293b;
+    --texto-suave: #64748b;
+    --borda: #e2e8f0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    color: var(--texto);
+    padding: 25px 15px;
+}
+
+.container {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* ===== Cabeçalho ===== */
+header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+header h1 {
+    color: var(--azul);
+    margin-bottom: 10px;
+}
+
+header p {
+    color: var(--texto-suave);
+    line-height: 1.5;
+}
+
+/* ===== Cartões (formulário e lista) ===== */
+form, .lista-container {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 15px #0000000d;
+}
+
+form h2 {
+    margin-bottom: 5px;
+}
+
+form > label {
+    display: block;
+    font-weight: bold;
+    margin: 15px 0 8px;
+}
+
+input[type="text"], select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+input:focus, select:focus, button:focus-visible {
+    outline: 2px solid #93c5fd;
+    border-color: var(--azul);
+}
+
+fieldset {
+    border: none;
+    margin-top: 20px;
+}
+
+legend {
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+fieldset label {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0 15px 5px 0;
+}
+
+/* ===== Botões do formulário ===== */
+.acoes-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-adicionar {
+    flex: 1;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: var(--azul);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-adicionar:hover {
+    background: var(--azul-escuro);
+}
+
+.btn-cancelar {
+    padding: 13px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: white;
+    color: var(--texto-suave);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* O atributo hidden perde força quando o elemento tem display próprio,
+   então reforçamos aqui */
+[hidden] {
+    display: none !important;
+}
+
+/* ===== Mensagem de feedback ===== */
+.mensagem {
+    display: none;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.mensagem.visivel { display: block; }
+.mensagem.sucesso { background: #dcfce7; color: #166534; }
+.mensagem.erro    { background: #fee2e2; color: var(--vermelho); }
+
+/* ===== Contadores ===== */
+.contadores {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 12px 0 18px;
+}
+
+.contadores p {
+    background: #f8fafc;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+}
+
+.contadores strong {
+    display: block;
+    font-size: 22px;
+    color: var(--azul);
+}
+
+.contadores span {
+    font-size: 13px;
+    color: var(--texto-suave);
+}
+
+/* ===== Filtros ===== */
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.filtro {
+    padding: 8px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 20px;
+    background: white;
+    color: var(--texto-suave);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.filtro.ativo {
+    background: var(--azul);
+    border-color: var(--azul);
+    color: white;
+}
+
+/* ===== Lista de tarefas ===== */
+#lista-tarefas {
+    list-style: none;
+}
+
+.tarefa {
+    padding: 15px;
+    border: 1px solid var(--borda);
+    border-left: 5px solid var(--azul);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow-wrap: anywhere;
+}
+
+.tarefa.concluida {
+    background: #ecfdf5;
+    border-left-color: var(--verde);
+}
+
+.tarefa.concluida .titulo-tarefa {
+    text-decoration: line-through;
+    color: var(--texto-suave);
+}
+
+.tarefa.editando {
+    outline: 2px dashed var(--azul);
+}
+
+.detalhes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #475569;
+}
+
+.vazio {
+    text-align: center;
+    color: var(--texto-suave);
+    padding: 20px 0;
+}
+
+/* ===== Botões de ação de cada tarefa ===== */
+.acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.acoes button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-concluir { background: #dcfce7; color: #166534; }
+.btn-editar   { background: #dbeafe; color: var(--azul-escuro); }
+.btn-remover  { background: #fee2e2; color: var(--vermelho); }
+
+.btn-concluir:hover { background: #bbf7d0; }
+.btn-editar:hover   { background: #bfdbfe; }
+.btn-remover:hover  { background: #fecaca; }
+
+/* ===== Responsividade (celulares) ===== */
+@media (max-width: 480px) {
+    body { padding: 18px 10px; }
+    form, .lista-container { padding: 16px; }
+    header h1 { font-size: 25px; }
+    fieldset label { margin-right: 10px; }
+    .acoes-form { flex-direction: column; }
+    .contadores strong { font-size: 18px; }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Organizaê: gerenciador de tarefas feito com HTML, CSS e JavaScript puro.">
+    <title>Organizaê | Minha Lista de Tarefas</title>
+
+    <!-- Caminhos novos: CSS e JS agora ficam em pastas separadas -->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <header>
+            <h1>Organizaê</h1>
+            <p>Organize suas atividades e acompanhe seu progresso.</p>
+        </header>
+
+        <!-- Área de feedback: o JS escreve aqui as mensagens de sucesso/erro.
+             role="status" faz leitores de tela anunciarem o texto -->
+        <p id="mensagem" class="mensagem" role="status" aria-live="polite"></p>
+
+        <!-- Formulário usado tanto para ADICIONAR quanto para EDITAR -->
+        <form id="form-tarefa" novalidate>
+            <h2 id="titulo-form">Nova tarefa</h2>
+
+            <label for="titulo">Nome da tarefa</label>
+            <input type="text" id="titulo" placeholder="Ex.: Estudar JavaScript" maxlength="80" required>
+
+            <fieldset>
+                <legend>Prioridade</legend>
+                <label><input type="radio" name="prioridade" value="Alta" required> Alta</label>
+                <label><input type="radio" name="prioridade" value="Média"> Média</label>
+                <label><input type="radio" name="prioridade" value="Baixa"> Baixa</label>
+            </fieldset>
+
+            <label for="categoria">Categoria</label>
+            <select id="categoria" required>
+                <option value="Estudo">Estudo</option>
+                <option value="Trabalho">Trabalho</option>
+                <option value="Lazer">Lazer</option>
+                <option value="Pessoal">Pessoal</option>
+                <option value="Outros">Outros</option>
+            </select>
+
+            <div class="acoes-form">
+                <button type="submit" id="btn-salvar" class="btn-adicionar">+ Adicionar tarefa</button>
+                <!-- Só aparece quando estamos editando (atributo hidden) -->
+                <button type="button" id="btn-cancelar" class="btn-cancelar" hidden>Cancelar edição</button>
+            </div>
+        </form>
+
+        <section class="lista-container">
+            <h2>Minhas atividades</h2>
+
+            <!-- Contadores: total, pendentes e concluídas -->
+            <div class="contadores" aria-label="Resumo das tarefas">
+                <p><strong id="cont-total">0</strong> <span>Total</span></p>
+                <p><strong id="cont-pendentes">0</strong> <span>Pendentes</span></p>
+                <p><strong id="cont-concluidas">0</strong> <span>Concluídas</span></p>
+            </div>
+
+            <!-- Filtros por status. data-filtro é lido pelo JS -->
+            <nav class="filtros" aria-label="Filtrar tarefas por status">
+                <button type="button" class="filtro ativo" data-filtro="todas" aria-pressed="true">Todas</button>
+                <button type="button" class="filtro" data-filtro="pendentes" aria-pressed="false">Pendentes</button>
+                <button type="button" class="filtro" data-filtro="concluidas" aria-pressed="false">Concluídas</button>
+            </nav>
+
+            <ul id="lista-tarefas"></ul>
+        </section>
+    </main>
+</body>
+</html>
