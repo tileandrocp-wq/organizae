@@ -2,7 +2,7 @@
 
 Aplicação web de gerenciamento de tarefas feita com HTML, CSS e JavaScript puro, sem frameworks. Os dados ficam salvos no navegador, então as tarefas continuam lá depois de fechar a página.
 
-**Aplicação publicada:** https://SEU-USUARIO.github.io/organizae/
+**Aplicação publicada:** https://tileandrocp-wq.github.io/organizae/
 
 ## Funcionalidades
 
